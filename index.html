@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novatune - Your Mood-Based Music Companion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS file (if you have one) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Include -->
+    <div id="header-container">
+        <!-- Content will be loaded by JavaScript -->
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Your page content goes here -->
+        <h1>Welcome to Novatune</h1>
+        <p>Music that matches your mood...</p>
+    </main>
+
+    <!-- Footer Include -->
+    <div id="footer-container">
+        <!-- Content will be loaded by JavaScript -->
+    </div>
+
+    <!-- JavaScript to load components -->
+    <script>
+        // Load Header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                initHeaderScripts();
+            });
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                initFooterScripts();
+            });
+
+        // Initialize header scripts
+        function initHeaderScripts() {
+            // Make buttons interactive
+            document.querySelector('.btn-signin')?.addEventListener('click', function() {
+                alert('Sign In clicked - would redirect to login page');
+            });
+            
+            document.querySelector('.btn-signup')?.addEventListener('click', function() {
+                alert('Sign Up clicked - would redirect to registration page');
+            });
+        }
+
+        // Initialize footer scripts
+        function initFooterScripts() {
+            // Current year for copyright
+            const copyrightElement = document.querySelector('.footer-bottom p');
+            if (copyrightElement) {
+                copyrightElement.innerHTML = 
+                    `&copy; ${new Date().getFullYear()} Novatune. All rights reserved.`;
+            }
+        }
+    </script>
+</body>
+</html>
